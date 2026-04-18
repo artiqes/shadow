@@ -77,21 +77,16 @@ AUTO = url-test,interval=600,timeout=5,url=https://cp.cloudflare.com/generate_20
 # Правила маршрутизации
 
 [Rule]
-# --- Yandex Direct ---
-DOMAIN-SUFFIX,yandex.net,DIRECT
-DOMAIN-SUFFIX,yandex.ru,DIRECT
-DOMAIN-SUFFIX,yandex.com,DIRECT
-DOMAIN-SUFFIX,yandex.kz,DIRECT
-DOMAIN-SUFFIX,yandex.by,DIRECT
-DOMAIN-SUFFIX,yandex.st,DIRECT
-DOMAIN-SUFFIX,yastatic.net,DIRECT
-DOMAIN-SUFFIX,yandex.net.ru,DIRECT
-DOMAIN-KEYWORD,yandex,DIRECT
-DOMAIN-SUFFIX,wxwd.twk.ovh,DIRECT
-#--- 1. БЛОКИРОВКА РЕКЛАМЫ ---
+# --- Local Network (Must be FIRST) ---
+IP-CIDR,10.0.0.0/8,DIRECT
+IP-CIDR,127.0.0.0/8,DIRECT
+IP-CIDR,172.16.0.0/12,DIRECT
+IP-CIDR,192.168.0.0/16,DIRECT
+
+#--- БЛОКИРОВКА РЕКЛАМЫ ---
 RULE-SET,https://raw.githubusercontent.com/dlisin/shadowrocket-config/master/reject.list,REJECT
 
-# --- Gemini & Google TOTAL FIX (with IP) ---
+# --- Gemini & Google TOTAL FIX ---
 DOMAIN,robinfrontend-pa.googleapis.com,PROXY
 DOMAIN,generativelanguage.googleapis.com,PROXY
 DOMAIN-SUFFIX,gemini.google.com,PROXY
@@ -110,7 +105,47 @@ IP-CIDR,172.217.0.0/16,PROXY
 IP-CIDR,142.250.0.0/15,PROXY
 DOMAIN-KEYWORD,google-analytics,REJECT
 
-# --- 2. МАШИНА LIXIANG + КИТАЙСКИЕ СЕРВИСЫ (DIRECT) ---
+# --- РОССИЙСКИЙ ИНТЕРНЕТ (DIRECT) ---
+DOMAIN-SUFFIX,ru,DIRECT
+DOMAIN-SUFFIX,su,DIRECT
+DOMAIN-SUFFIX,xn--p1ai,DIRECT
+# --- Yandex Direct ---
+DOMAIN-SUFFIX,yandex.net,DIRECT
+DOMAIN-SUFFIX,yandex.ru,DIRECT
+DOMAIN-SUFFIX,yandex.com,DIRECT
+DOMAIN-SUFFIX,yandex.kz,DIRECT
+DOMAIN-SUFFIX,yandex.by,DIRECT
+DOMAIN-SUFFIX,yandex.st,DIRECT
+DOMAIN-SUFFIX,yastatic.net,DIRECT
+DOMAIN-SUFFIX,yandex.net.ru,DIRECT
+DOMAIN-KEYWORD,yandex,DIRECT
+DOMAIN-SUFFIX,wxwd.twk.ovh,DIRECT
+# --- БАНКИ И ФИНАНСЫ РФ (DIRECT) ---
+DOMAIN-KEYWORD,sberbank,DIRECT
+DOMAIN-KEYWORD,tinkoff,DIRECT
+DOMAIN-KEYWORD,alfabank,DIRECT
+DOMAIN-KEYWORD,vtb,DIRECT
+DOMAIN-KEYWORD,raiffeisen,DIRECT
+DOMAIN-KEYWORD,gazprombank,DIRECT
+DOMAIN-KEYWORD,rshb,DIRECT
+DOMAIN-KEYWORD,open.ru,DIRECT
+DOMAIN-KEYWORD,qiwi,DIRECT
+DOMAIN-SUFFIX,nspk.ru,DIRECT
+DOMAIN-SUFFIX,mir-vsem.ru,DIRECT
+# --- ГОСУСЛУГИ, ПАРКОВКИ И ГОРОД (DIRECT) ---
+DOMAIN-SUFFIX,mos.ru,DIRECT
+DOMAIN-SUFFIX,mos-parking.ru,DIRECT
+DOMAIN-SUFFIX,parking.mos.ru,DIRECT
+DOMAIN-SUFFIX,gosuslugi.ru,DIRECT
+DOMAIN-SUFFIX,nalog.ru,DIRECT
+
+# --- APPLE (DIRECT для скорости обновлений) ---
+DOMAIN-SUFFIX,apple.com,DIRECT
+DOMAIN-SUFFIX,icloud.com,DIRECT
+DOMAIN-SUFFIX,mzstatic.com,DIRECT
+DOMAIN-KEYWORD,apple-cloud,DIRECT
+
+# --- LIXIANG + КИТАЙСКИЕ СЕРВИСЫ (DIRECT) ---
 DOMAIN-SUFFIX,lixiang.com,DIRECT
 DOMAIN-SUFFIX,li.auto,DIRECT
 DOMAIN-SUFFIX,chehejia.com,DIRECT
@@ -126,43 +161,6 @@ DOMAIN-SUFFIX,autonavi.com,DIRECT
 DOMAIN-KEYWORD,lixiang,DIRECT
 DOMAIN-KEYWORD,leauto,DIRECT
 GEOIP,CN,DIRECT
-
-# --- 3. БАНКИ И ФИНАНСЫ РФ (DIRECT) ---
-DOMAIN-KEYWORD,sberbank,DIRECT
-DOMAIN-KEYWORD,tinkoff,DIRECT
-DOMAIN-KEYWORD,alfabank,DIRECT
-DOMAIN-KEYWORD,vtb,DIRECT
-DOMAIN-KEYWORD,raiffeisen,DIRECT
-DOMAIN-KEYWORD,gazprombank,DIRECT
-DOMAIN-KEYWORD,rshb,DIRECT
-DOMAIN-KEYWORD,open.ru,DIRECT
-DOMAIN-KEYWORD,qiwi,DIRECT
-DOMAIN-SUFFIX,nspk.ru,DIRECT
-DOMAIN-SUFFIX,mir-vsem.ru,DIRECT
-
-# --- 4. ГОСУСЛУГИ, ПАРКОВКИ И ГОРОД (DIRECT) ---
-DOMAIN-SUFFIX,mos.ru,DIRECT
-DOMAIN-SUFFIX,mos-parking.ru,DIRECT
-DOMAIN-SUFFIX,parking.mos.ru,DIRECT
-DOMAIN-SUFFIX,gosuslugi.ru,DIRECT
-DOMAIN-SUFFIX,nalog.ru,DIRECT
-
-# --- 5. APPLE (DIRECT для скорости обновлений) ---
-DOMAIN-SUFFIX,apple.com,DIRECT
-DOMAIN-SUFFIX,icloud.com,DIRECT
-DOMAIN-SUFFIX,mzstatic.com,DIRECT
-DOMAIN-KEYWORD,apple-cloud,DIRECT
-
-# --- 6. РОССИЙСКИЙ ИНТЕРНЕТ (DIRECT) ---
-DOMAIN-SUFFIX,ru,DIRECT
-DOMAIN-SUFFIX,su,DIRECT
-DOMAIN-SUFFIX,xn--p1ai,DIRECT
-RULE-SET,https://raw.githubusercontent.com/dlisin/shadowrocket-config/master/direct.list,DIRECT
-
-# --- 7. ОПТИМИЗАЦИЯ WHATSAPP И TELEGRAM (PROXY) ---
-RULE-SET,https://raw.githubusercontent.com/misha-tgshv/shadowrocket-configuration-file/main/rules/voice_ports.list,PROXY
-RULE-SET,https://raw.githubusercontent.com/HybridNetworks/whatsapp-cidr/main/WhatsApp/whatsapp_cidr_ipv4.list,PROXY,no-resolve
-RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/Telegram/Telegram.list,PROXY
 
 # --- 8. ФИНАЛ ---
 FINAL,PROXY
