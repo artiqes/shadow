@@ -1,4 +1,4 @@
-# Shadowrocket: 2026-04-18 23:38:10
+# Shadowrocket: 2026-04-19 11:05:07
 [General]
 
 # Включение HTTPS-декрипции:
@@ -43,7 +43,11 @@ fallback-dns-server = 8.8.4.4, 9.9.9.9, system
 hijack-dns = :53
 
 # Адреса/домены, обходящие прокси, но проходящие через туннель (TUN-интерфейс)
-skip-proxy = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, localhost, *.local, captive.apple.com, *.yandex.ru, *.yandex.net, *.mos.ru, *.mos-parking.ru, *.parking.mos.ru, *.li.auto, *.lixiang.com
+
+skip-proxy = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, localhost, *.local, captive.apple.com, *.yandex.ru, *.yandex.net, *.yastatic.net, *.yango.com, *.passport.yandex.net, *.appmetrica.yandex.net, *.mos.ru, *.gosuslugi.ru, *.gu-st.ru, *.gosuslugi4.ru, *.vtb.ru, *.mos-parking.ru, *.parking.mos.ru, *.li.auto, *.lixiang.com, *.gpnbonus.ru, *.gazpromneft.ru, *.inappstory.ru, *.mvd.ru, *.privratnik.net, *.domyland.ru, *.domyland.com, *.dvr163.com, *.amazonaws.com, *.app-measurement.com, *.bridgeoos.com, *.appsflyer.com, *.appsflyersdk.com, imap.gmail.com, smtp.gmail.com, ip-api.com, region1.app-analytics-services.com, firebaselogging-pa.googleapis.com, 17.0.0.0/8, 213.180.192.0/19, 77.88.0.0/18, 87.250.224.0/19, 93.158.128.0/18, 109.207.0.0/20, 178.154.128.0/18, 217.69.128.0/20, 95.173.128.0/18, 185.162.131.0/24, 109.124.0.0/16, 82.179.0.0/17, 95.167.0.0/16, *.2gis.ru, *.2gis.com
+
+
+
 
 # IP-диапазоны, исключённые из туннеля (TUN-интерфейс). Например, UDP/DNS для стабильности сетевых сервисов
 tun-excluded-routes = 10.0.0.0/8,100.64.0.0/10,127.0.0.0/8,169.254.0.0/16,172.16.0.0/12,192.0.0.0/24,192.0.2.0/24,192.88.99.0/24,192.168.0.0/16,198.51.100.0/24,203.0.113.0/24,224.0.0.0/4,255.255.255.255/32,239.255.255.250/32,212.11.151.0/24,212.45.12.0/24,95.167.212.0/24
@@ -116,8 +120,17 @@ DOMAIN-SUFFIX,yandex.kz,DIRECT
 DOMAIN-SUFFIX,yandex.by,DIRECT
 DOMAIN-SUFFIX,yandex.st,DIRECT
 DOMAIN-SUFFIX,yastatic.net,DIRECT
-DOMAIN-SUFFIX,yandex.net.ru,DIRECT
+DOMAIN-SUFFIX,yandex.net,DIRECT
 DOMAIN-KEYWORD,yandex,DIRECT
+DOMAIN-SUFFIX,yandexmaps.ru,DIRECT
+DOMAIN-KEYWORD,yametrika,DIRECT
+DOMAIN-SUFFIX,yango.com,DIRECT
+DOMAIN-SUFFIX,app-analytics-services.com,DIRECT
+DOMAIN-KEYWORD,yango,DIRECT
+DOMAIN,mc.yandex.ru,DIRECT
+DOMAIN,ads.adfox.ru,DIRECT
+DOMAIN,firebaselogging-pa.googleapis.com,DIRECT
+
 # Твой специфический адрес
 DOMAIN-SUFFIX,wxwd.twk.ovh,DIRECT
 
@@ -164,19 +177,45 @@ GEOIP,CN,DIRECT
 DOMAIN-KEYWORD,sberbank,DIRECT
 DOMAIN-KEYWORD,tinkoff,DIRECT
 DOMAIN-KEYWORD,alfabank,DIRECT
+DOMAIN-SUFFIX,vtb.ru,DIRECT
+DOMAIN-SUFFIX,vtbconnect.ru,DIRECT
 DOMAIN-KEYWORD,vtb,DIRECT
 DOMAIN-KEYWORD,raiffeisen,DIRECT
 DOMAIN-KEYWORD,gazprombank,DIRECT
+DOMAIN-SUFFIX,gpnbonus.ru,DIRECT
+DOMAIN-SUFFIX,gazpromneft.ru,DIRECT
+DOMAIN-SUFFIX,gpn.ru,DIRECT
+DOMAIN-SUFFIX,gpn-station.ru,DIRECT
+DOMAIN-SUFFIX,inappstory.ru,DIRECT
+DOMAIN-KEYWORD,gazprom,DIRECT
 DOMAIN-KEYWORD,rshb,DIRECT
 DOMAIN-KEYWORD,open.ru,DIRECT
 DOMAIN-KEYWORD,qiwi,DIRECT
 DOMAIN-SUFFIX,nspk.ru,DIRECT
 DOMAIN-SUFFIX,mir-vsem.ru,DIRECT
+DOMAIN-SUFFIX,gosuslugi.ru,DIRECT
+DOMAIN-SUFFIX,gu-st.ru,DIRECT
+DOMAIN-SUFFIX,gosuslugi4.ru,DIRECT
+DOMAIN-SUFFIX,gosuslugi-dev.ru,DIRECT
+DOMAIN-SUFFIX,gosuslugi.dev,DIRECT
+DOMAIN-SUFFIX,gosuslugi-tuning.ru,DIRECT
 DOMAIN-SUFFIX,mos.ru,DIRECT
 DOMAIN-SUFFIX,mos-parking.ru,DIRECT
 DOMAIN-SUFFIX,parking.mos.ru,DIRECT
-DOMAIN-SUFFIX,gosuslugi.ru,DIRECT
+DOMAIN-SUFFIX,emias.info,DIRECT
 DOMAIN-SUFFIX,nalog.ru,DIRECT
+DOMAIN-SUFFIX,mvd.ru,DIRECT
+DOMAIN-SUFFIX,gosuslugi.dev,DIRECT
+DOMAIN-SUFFIX,gosuslugi-tuning.ru,DIRECT
+DOMAIN-SUFFIX,domyland.ru,DIRECT
+DOMAIN-SUFFIX,domyland.com,DIRECT
+DOMAIN-SUFFIX,dvr163.com,DIRECT
+DOMAIN-SUFFIX,amazonaws.com,DIRECT
+DOMAIN-SUFFIX,ios.bugly.qq.com,DIRECT
+DOMAIN-KEYWORD,domyland,DIRECT
+DOMAIN-KEYWORD,amazonaws,DIRECT
+DOMAIN-KEYWORD,2gis,DIRECT
+DOMAIN-KEYWORD,gkan,DIRECT
 
 # --- 8. RU СЕГМЕНТ (DIRECT) ---
 DOMAIN-SUFFIX,ru,DIRECT
