@@ -1,4 +1,4 @@
-# Shadowrocket: 2026-04-19 11:05:07
+# Shadowrocket: 2026-04-19 18:10:28
 [General]
 
 # Включение HTTPS-декрипции:
@@ -34,20 +34,17 @@ dns-direct-fallback-proxy = true
 
 # Перезаписывает системный DNS на указанные DoH-серверы
 # Можно выбрать альтернативный DOH/DOT — https://github.com/curl/curl/wiki/DNS-over-HTTPS
-dns-server = 8.8.8.8, 1.1.1.1, https://dns.google/dns-query, https://1.1.1.1/dns-query
+dns-server = 8.8.8.8
 
 # При сбое основного DNS — fallback на системный DNS
-fallback-dns-server = 8.8.4.4, 9.9.9.9, system
+fallback-dns-server = system
 
 # Перехватывает DNS-запросы некоторых сервисов (Например, Netflix) на UDP/TCP порт 53 и направляет через программу
 hijack-dns = :53
 
 # Адреса/домены, обходящие прокси, но проходящие через туннель (TUN-интерфейс)
 
-skip-proxy = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, localhost, *.local, captive.apple.com, *.yandex.ru, *.yandex.net, *.yastatic.net, *.yango.com, *.passport.yandex.net, *.appmetrica.yandex.net, *.mos.ru, *.gosuslugi.ru, *.gu-st.ru, *.gosuslugi4.ru, *.vtb.ru, *.mos-parking.ru, *.parking.mos.ru, *.li.auto, *.lixiang.com, *.gpnbonus.ru, *.gazpromneft.ru, *.inappstory.ru, *.mvd.ru, *.privratnik.net, *.domyland.ru, *.domyland.com, *.dvr163.com, *.amazonaws.com, *.app-measurement.com, *.bridgeoos.com, *.appsflyer.com, *.appsflyersdk.com, imap.gmail.com, smtp.gmail.com, ip-api.com, region1.app-analytics-services.com, firebaselogging-pa.googleapis.com, 17.0.0.0/8, 213.180.192.0/19, 77.88.0.0/18, 87.250.224.0/19, 93.158.128.0/18, 109.207.0.0/20, 178.154.128.0/18, 217.69.128.0/20, 95.173.128.0/18, 185.162.131.0/24, 109.124.0.0/16, 82.179.0.0/17, 95.167.0.0/16, *.2gis.ru, *.2gis.com
-
-
-
+skip-proxy = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, localhost, *.local, captive.apple.com, *.apple.com, *.yandex.ru, *.yandex.net, *.yastatic.net, *.yango.com, *.passport.yandex.net, *.appmetrica.yandex.net, *.mts.ru, *.mos.ru, *.gosuslugi.ru, *.gu-st.ru, *.gosuslugi4.ru, *.vtb.ru, *.mos-parking.ru, *.parking.mos.ru, *.li.auto, *.lixiang.com, *.gpnbonus.ru, *.gazpromneft.ru, *.inappstory.ru, *.mvd.ru, *.privratnik.net, *.domyland.ru, *.domyland.com, *.dvr163.com, *.amazonaws.com, *.app-measurement.com, *.bridgeoos.com, *.appsflyer.com, *.appsflyersdk.com, *.smartmailcloud.com, *.2gis.ru, *.2gis.com, imap.gmail.com, smtp.gmail.com, ip-api.com, robinfrontend-pa.googleapis.com, region1.app-analytics-services.com, firebaselogging-pa.googleapis.com, 17.0.0.0/8, 213.180.192.0/19, 77.88.0.0/18, 87.250.224.0/19, 93.158.128.0/18, 109.207.0.0/20, 178.154.128.0/18, 217.69.128.0/20, 95.173.128.0/18, 185.162.131.0/24, 109.124.0.0/16, 82.179.0.0/17, 95.167.0.0/16
 
 # IP-диапазоны, исключённые из туннеля (TUN-интерфейс). Например, UDP/DNS для стабильности сетевых сервисов
 tun-excluded-routes = 10.0.0.0/8,100.64.0.0/10,127.0.0.0/8,169.254.0.0/16,172.16.0.0/12,192.0.0.0/24,192.0.2.0/24,192.88.99.0/24,192.168.0.0/16,198.51.100.0/24,203.0.113.0/24,224.0.0.0/4,255.255.255.255/32,239.255.255.250/32,212.11.151.0/24,212.45.12.0/24,95.167.212.0/24
@@ -82,14 +79,14 @@ AUTO = url-test,interval=600,timeout=5,url=https://cp.cloudflare.com/generate_20
 # Правила маршрутизации
 
 [Rule]
-# --- 1. ЛОКАЛЬНАЯ СЕТЬ (FIRST) ---
+# --- ЛОКАЛЬНАЯ СЕТЬ (FIRST) ---
 IP-CIDR,10.0.0.0/8,DIRECT
 IP-CIDR,127.0.0.0/8,DIRECT
 IP-CIDR,172.16.0.0/12,DIRECT
 IP-CIDR,192.168.0.0/16,DIRECT
 DOMAIN-SUFFIX,local,DIRECT
 
-# --- 2. БЛОКИРОВКА РЕКЛАМЫ ---
+# --- БЛОКИРОВКА РЕКЛАМЫ ---
 RULE-SET,https://raw.githubusercontent.com/dlisin/shadowrocket-config/master/reject.list,REJECT
 
 # --- 3. GEMINI & GOOGLE (PROXY) ---
@@ -112,7 +109,7 @@ IP-CIDR,172.217.0.0/16,PROXY
 IP-CIDR,142.250.0.0/15,PROXY
 DOMAIN-KEYWORD,google-analytics,REJECT
 
-# --- 4. YANDEX DIRECT (Все твои адреса) ---
+# --- YANDEX DIRECT ---
 DOMAIN-SUFFIX,yandex.net,DIRECT
 DOMAIN-SUFFIX,yandex.ru,DIRECT
 DOMAIN-SUFFIX,yandex.com,DIRECT
@@ -131,10 +128,10 @@ DOMAIN,mc.yandex.ru,DIRECT
 DOMAIN,ads.adfox.ru,DIRECT
 DOMAIN,firebaselogging-pa.googleapis.com,DIRECT
 
-# Твой специфический адрес
+# --- КИНОПАБ ---
 DOMAIN-SUFFIX,wxwd.twk.ovh,DIRECT
 
-# --- 5. APPLE (Все IP и домены из твоего списка) ---
+# --- APPLE ---
 DOMAIN-SUFFIX,apple.com,DIRECT
 DOMAIN-SUFFIX,icloud.com,DIRECT
 DOMAIN-SUFFIX,icloud-content.com,DIRECT
@@ -146,7 +143,6 @@ DOMAIN-SUFFIX,digicert.com,DIRECT
 DOMAIN-SUFFIX,entrust.net,DIRECT
 DOMAIN-KEYWORD,apple-dns,DIRECT
 DOMAIN-KEYWORD,icloud,DIRECT
-# Полный список твоих IP Apple
 IP-CIDR,17.0.0.0/8,DIRECT
 IP-CIDR,63.92.224.0/19,DIRECT
 IP-CIDR,65.199.0.0/18,DIRECT
@@ -156,7 +152,7 @@ IP-CIDR,192.35.50.0/24,DIRECT
 IP-CIDR,198.183.17.0/24,DIRECT
 IP-CIDR,205.180.175.0/24,DIRECT
 
-# --- 6. МАШИНА LIXIANG + КИТАЙ (DIRECT) ---
+# --- LIXIANG + КИТАЙ ---
 DOMAIN-SUFFIX,lixiang.com,DIRECT
 DOMAIN-SUFFIX,li.auto,DIRECT
 DOMAIN-SUFFIX,chehejia.com,DIRECT
@@ -173,7 +169,7 @@ DOMAIN-KEYWORD,lixiang,DIRECT
 DOMAIN-KEYWORD,leauto,DIRECT
 GEOIP,CN,DIRECT
 
-# --- 7. БАНКИ, ГОСУСЛУГИ И ПАРКОВКИ (DIRECT) ---
+# --- СЕРВИСЫ РФ ---
 DOMAIN-KEYWORD,sberbank,DIRECT
 DOMAIN-KEYWORD,tinkoff,DIRECT
 DOMAIN-KEYWORD,alfabank,DIRECT
@@ -217,19 +213,23 @@ DOMAIN-KEYWORD,amazonaws,DIRECT
 DOMAIN-KEYWORD,2gis,DIRECT
 DOMAIN-KEYWORD,gkan,DIRECT
 
-# --- 8. RU СЕГМЕНТ (DIRECT) ---
+# --- RU СЕГМЕНТ (DIRECT) ---
 DOMAIN-SUFFIX,ru,DIRECT
 DOMAIN-SUFFIX,su,DIRECT
 DOMAIN-SUFFIX,рф,DIRECT
 DOMAIN-SUFFIX,xn--p1ai,DIRECT
-RULE-SET,https://raw.githubusercontent.com/dlisin/shadowrocket-config/master/direct.list,DIRECT
 
-# --- 9. TELEGRAM & WHATSAPP (PROXY) ---
-RULE-SET,https://raw.githubusercontent.com/misha-tgshv/shadowrocket-configuration-file/main/rules/voice_ports.list,PROXY
-RULE-SET,https://raw.githubusercontent.com/HybridNetworks/whatsapp-cidr/main/WhatsApp/whatsapp_cidr_ipv4.list,PROXY,no-resolve
-RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/Telegram/Telegram.list,PROXY
+# --- TELEGRAM & WHATSAPP (PROXY) ---
+#RULE-SET,https://raw.githubusercontent.com/misha-tgshv/shadowrocket-configuration-file/main/rules/voice_ports.list,PROXY
+#RULE-SET,https://raw.githubusercontent.com/HybridNetworks/whatsapp-cidr/main/WhatsApp/whatsapp_cidr_ipv4.list,PROXY,no-resolve
+#RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/Telegram/Telegram.list,PROXY
+IP-CIDR,91.108.4.0/22,PROXY,no-resolve
+IP-CIDR,91.108.56.0/22,PROXY,no-resolve
+IP-CIDR,149.154.160.0/20,PROXY,no-resolve
+IP-CIDR,149.154.164.0/22,PROXY,no-resolve
+DOMAIN-KEYWORD,telegram,PROXY
 
-# --- 10. FINAL ---
+# --- FINAL ---
 FINAL,PROXY
 
 [Host]
