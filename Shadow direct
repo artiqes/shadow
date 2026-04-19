@@ -9,15 +9,15 @@ prefer-ipv6 = false
 private-ip-answer = true
 
 # Настройки DNS (DoH для обхода блокировок DNS-запросов)
+dns-server = https://1.1.1.1/dns-query, https://8.8.8.8/dns-query, 77.88.8.8
 dns-direct-system = false
-dns-fallback-system = false
+dns-fallback-system = true
 dns-direct-fallback-proxy = true
-dns-server = https://dns.google/dns-query, https://cloudflare-dns.com/dns-query
-fallback-dns-server = system
+fallback-dns-server = 8.8.8.8, 1.1.1.1
 hijack-dns = :53
 
 # Исключения туннеля (Локальная сеть и Apple)
-skip-proxy = skip-proxy = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, localhost, *.local, captive.apple.com, *.apple.com, *.yandex.ru, *.yandex.net, *.yastatic.net, *.yango.com, *.passport.yandex.net, *.appmetrica.yandex.net, *.mts.ru, *.mos.ru, *.gosuslugi.ru, *.gu-st.ru, *.gosuslugi4.ru, *.vtb.ru, *.mos-parking.ru, *.parking.mos.ru, *.li.auto, *.lixiang.com, *.gpnbonus.ru, *.gazpromneft.ru, *.inappstory.ru, *.mvd.ru, *.privratnik.net, *.domyland.ru, *.domyland.com, *.dvr163.com, *.amazonaws.com, *.app-measurement.com, *.bridgeoos.com, *.appsflyer.com, *.appsflyersdk.com, *.smartmailcloud.com, *.2gis.ru, *.2gis.com, imap.gmail.com, smtp.gmail.com, ip-api.com, robinfrontend-pa.googleapis.com, region1.app-analytics-services.com, firebaselogging-pa.googleapis.com, 17.0.0.0/8, 213.180.192.0/19, 77.88.0.0/18, 87.250.224.0/19, 93.158.128.0/18, 109.207.0.0/20, 178.154.128.0/18, 217.69.128.0/20, 95.173.128.0/18, 185.162.131.0/24, 109.124.0.0/16, 82.179.0.0/17, 95.167.0.0/16
+skip-proxy = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, localhost, *.local, captive.apple.com, *.apple.com, *.yandex.ru, *.yandex.net, *.yastatic.net, *.yango.com, *.passport.yandex.net, *.appmetrica.yandex.net, *.mts.ru, *.mos.ru, *.gosuslugi.ru, *.gu-st.ru, *.gosuslugi4.ru, *.vtb.ru, *.mos-parking.ru, *.parking.mos.ru, *.li.auto, *.lixiang.com, *.gpnbonus.ru, *.gazpromneft.ru, *.inappstory.ru, *.mvd.ru, *.privratnik.net, *.domyland.ru, *.domyland.com, *.dvr163.com, *.amazonaws.com, *.app-measurement.com, *.bridgeoos.com, *.appsflyer.com, *.appsflyersdk.com, *.smartmailcloud.com, *.2gis.ru, *.2gis.com, imap.gmail.com, smtp.gmail.com, ip-api.com, robinfrontend-pa.googleapis.com, region1.app-analytics-services.com, firebaselogging-pa.googleapis.com, 17.0.0.0/8, 213.180.192.0/19, 77.88.0.0/18, 87.250.224.0/19, 93.158.128.0/18, 109.207.0.0/20, 178.154.128.0/18, 217.69.128.0/20, 95.173.128.0/18, 185.162.131.0/24, 109.124.0.0/16, 82.179.0.0/17, 95.167.0.0/16
 tun-excluded-routes = 10.0.0.0/8,100.64.0.0/10,127.0.0.0/8,169.254.0.0/16,172.16.0.0/12,192.0.0.0/24,192.0.2.0/24,192.88.99.0/24,192.168.0.0/16,198.51.100.0/24,203.0.113.0/24,224.0.0.0/4,255.255.255.255/32,239.255.255.250/32
 
 # Оптимизация соединения
