@@ -17,7 +17,7 @@ fallback-dns-server = system
 hijack-dns = :53
 
 # Исключения туннеля (Локальная сеть и Apple)
-skip-proxy = 192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,localhost,*.local,captive.apple.com
+skip-proxy = skip-proxy = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, localhost, *.local, captive.apple.com, *.apple.com, *.yandex.ru, *.yandex.net, *.yastatic.net, *.yango.com, *.passport.yandex.net, *.appmetrica.yandex.net, *.mts.ru, *.mos.ru, *.gosuslugi.ru, *.gu-st.ru, *.gosuslugi4.ru, *.vtb.ru, *.mos-parking.ru, *.parking.mos.ru, *.li.auto, *.lixiang.com, *.gpnbonus.ru, *.gazpromneft.ru, *.inappstory.ru, *.mvd.ru, *.privratnik.net, *.domyland.ru, *.domyland.com, *.dvr163.com, *.amazonaws.com, *.app-measurement.com, *.bridgeoos.com, *.appsflyer.com, *.appsflyersdk.com, *.smartmailcloud.com, *.2gis.ru, *.2gis.com, imap.gmail.com, smtp.gmail.com, ip-api.com, robinfrontend-pa.googleapis.com, region1.app-analytics-services.com, firebaselogging-pa.googleapis.com, 17.0.0.0/8, 213.180.192.0/19, 77.88.0.0/18, 87.250.224.0/19, 93.158.128.0/18, 109.207.0.0/20, 178.154.128.0/18, 217.69.128.0/20, 95.173.128.0/18, 185.162.131.0/24, 109.124.0.0/16, 82.179.0.0/17, 95.167.0.0/16
 tun-excluded-routes = 10.0.0.0/8,100.64.0.0/10,127.0.0.0/8,169.254.0.0/16,172.16.0.0/12,192.0.0.0/24,192.0.2.0/24,192.88.99.0/24,192.168.0.0/16,198.51.100.0/24,203.0.113.0/24,224.0.0.0/4,255.255.255.255/32,239.255.255.250/32
 
 # Оптимизация соединения
@@ -31,8 +31,15 @@ udp-policy-not-supported-behaviour = REJECT
 AUTO = url-test, interval=600, timeout=5, url=https://cp.cloudflare.com/generate_204, policy-regex-filter=*
 
 [Rule]
-# --- 1. ПРЯМОЕ СОЕДИНЕНИЕ (DIRECT) ---
-DOMAIN-SUFFIX,online.moysklad.ru,DIRECT
+# --- ЛОКАЛЬНАЯ СЕТЬ (FIRST) ---
+IP-CIDR,10.0.0.0/8,DIRECT
+IP-CIDR,127.0.0.0/8,DIRECT
+IP-CIDR,172.16.0.0/12,DIRECT
+IP-CIDR,192.168.0.0/16,DIRECT
+DOMAIN-SUFFIX,local,DIRECT
+
+# --- ПРЯМОЕ СОЕДИНЕНИЕ (DIRECT) ---
+DOMAIN-SUFFIX,moysklad.ru,DIRECT
 DOMAIN-SUFFIX,mos.ru,DIRECT
 DOMAIN-KEYWORD,yandex,DIRECT
 DOMAIN-SUFFIX,yandex.net,DIRECT
@@ -42,8 +49,6 @@ DOMAIN-SUFFIX,vk.com,DIRECT
 DOMAIN-SUFFIX,ok.ru,DIRECT
 USER-AGENT,Yandex*,DIRECT
 USER-AGENT,Kaspersky*,DIRECT
-
-# --- 2. КРИТИЧЕСКИЙ ПРОКСИ (ПРОПИСАНО ВРУЧНУЮ ДЛЯ НАДЕЖНОСТИ) ---
 
 # Gemini / Google AI
 DOMAIN,gemini.google.com,AUTO
@@ -58,15 +63,55 @@ DOMAIN-SUFFIX,youtube.com,AUTO
 DOMAIN-SUFFIX,googlevideo.com,AUTO
 DOMAIN-SUFFIX,ytimg.com,AUTO
 DOMAIN-SUFFIX,ggpht.com,AUTO
+IP-CIDR,64.233.160.0/19,AUTO,no-resolve
+IP-CIDR,74.125.0.0/16,AUTO,no-resolve
+IP-CIDR,108.177.0.0/17,AUTO,no-resolve
+IP-CIDR,142.250.0.0/15,AUTO,no-resolve
+IP-CIDR,172.217.0.0/16,AUTO,no-resolve
+IP-CIDR,173.194.0.0/16,AUTO,no-resolve
+IP-CIDR,209.85.128.0/17,AUTO,no-resolve
+IP-CIDR,216.58.192.0/19,AUTO,no-resolve
 
-# Telegram (Домены + IP)
+# --- TELEGRAM & КЛИЕНТЫ ---
+DOMAIN,api.imem.app,AUTO
+DOMAIN,api.swiftgram.app,AUTO
+DOMAIN-KEYWORD,nicegram,AUTO
 DOMAIN-KEYWORD,telegram,AUTO
 DOMAIN-SUFFIX,t.me,AUTO
 DOMAIN-SUFFIX,tdesktop.com,AUTO
-IP-CIDR,91.108.4.0/22,AUTO,no-resolve
-IP-CIDR,91.108.56.0/22,AUTO,no-resolve
+DOMAIN-SUFFIX,telegra.ph,AUTO
+DOMAIN-SUFFIX,telegram.org,AUTO
+DOMAIN-SUFFIX,telegram.dog,AUTO
+DOMAIN-SUFFIX,telegram.me,AUTO
+DOMAIN-SUFFIX,telegram.space,AUTO
+DOMAIN-SUFFIX,telegram-cdn.org,AUTO
+DOMAIN-SUFFIX,telegramdownload.com,AUTO
+DOMAIN-SUFFIX,cdn-telegram.org,AUTO
+DOMAIN-SUFFIX,comments.app,AUTO
+DOMAIN-SUFFIX,contest.com,AUTO
+DOMAIN-SUFFIX,graph.org,AUTO
+DOMAIN-SUFFIX,legra.ph,AUTO
+DOMAIN-SUFFIX,mbrx.app,AUTO
+DOMAIN-SUFFIX,quiz.directory,AUTO
+DOMAIN-SUFFIX,stel.com,AUTO
+DOMAIN-SUFFIX,telega.one,AUTO
+DOMAIN-SUFFIX,telesco.pe,AUTO
+DOMAIN-SUFFIX,tg.dev,AUTO
+DOMAIN-SUFFIX,tx.me,AUTO
+DOMAIN-SUFFIX,usercontent.dev,AUTO
+
+# Telegram IP Ranges & ASN
+IP-CIDR,91.108.0.0/16,AUTO,no-resolve
 IP-CIDR,149.154.160.0/20,AUTO,no-resolve
-IP-CIDR,185.76.151.0/24,AUTO,no-resolve
+IP-CIDR,109.239.140.0/24,AUTO,no-resolve
+IP-CIDR,5.28.192.0/18,AUTO,no-resolve
+IP-CIDR,139.59.210.98/32,AUTO,no-resolve
+IP-CIDR,196.55.216.167/32,AUTO,no-resolve
+IP-ASN,211157,AUTO,no-resolve
+IP-ASN,44907,AUTO,no-resolve
+IP-ASN,59930,AUTO,no-resolve
+IP-ASN,62014,AUTO,no-resolve
+IP-ASN,62041,AUTO,no-resolve
 
 # Meta (Instagram, WhatsApp)
 DOMAIN-KEYWORD,instagram,AUTO
@@ -88,10 +133,12 @@ DOMAIN-KEYWORD,openai,AUTO
 DOMAIN-SUFFIX,openai.com,AUTO
 DOMAIN-SUFFIX,chatgpt.com,AUTO
 
-# --- 3. АВТОМАТИЧЕСКИЕ СПИСКИ (ДЛЯ ПОДСТРАХОВКИ И РЕКЛАМЫ) ---
-RULE-SET,https://raw.githubusercontent.com/dlisin/shadowrocket-config/master/reject.list,REJECT
-RULE-SET,https://github.com/toneywhitez/zkeen_rules/releases/latest/download/youtube_ips.list,AUTO,no-resolve
-RULE-SET,https://raw.githubusercontent.com/misha-tgshv/shadowrocket-configuration-file/main/rules/voice_ports.list,AUTO
+DOMAIN-KEYWORD,nnmclub,AUTO
+DOMAIN-KEYWORD,rutracker,AUTO
+
+# --- 3. АВТОМАТИЧЕСКИЕ СПИСКИ ---
+
+#RULE-SET,https://raw.githubusercontent.com/misha-tgshv/shadowrocket-configuration-file/main/rules/voice_ports.list,AUTO
 
 # --- 4. ВСЁ ОСТАЛЬНОЕ НАПРЯМУЮ ---
 FINAL,DIRECT
