@@ -1,0 +1,100 @@
+# Shadowrocket Config (Updated: 2026-04-19)
+# Режим: Whitelist (Всё напрямую, кроме заблокированных ресурсов)
+
+[General]
+# Основные системные настройки
+bypass-system = true
+ipv6 = false
+prefer-ipv6 = false
+private-ip-answer = true
+
+# Настройки DNS (DoH для обхода блокировок DNS-запросов)
+dns-direct-system = false
+dns-fallback-system = false
+dns-direct-fallback-proxy = true
+dns-server = https://dns.google/dns-query, https://cloudflare-dns.com/dns-query
+fallback-dns-server = system
+hijack-dns = :53
+
+# Исключения туннеля (Локальная сеть и Apple)
+skip-proxy = 192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,localhost,*.local,captive.apple.com
+tun-excluded-routes = 10.0.0.0/8,100.64.0.0/10,127.0.0.0/8,169.254.0.0/16,172.16.0.0/12,192.0.0.0/24,192.0.2.0/24,192.88.99.0/24,192.168.0.0/16,198.51.100.0/24,203.0.113.0/24,224.0.0.0/4,255.255.255.255/32,239.255.255.250/32
+
+# Оптимизация соединения
+always-real-ip = *
+icmp-auto-reply = false
+always-reject-url-rewrite = false
+udp-policy-not-supported-behaviour = REJECT
+
+[Proxy Group]
+# Автоматический выбор самого быстрого сервера из твоего списка
+AUTO = url-test, interval=600, timeout=5, url=https://cp.cloudflare.com/generate_204, policy-regex-filter=*
+
+[Rule]
+# --- 1. ПРЯМОЕ СОЕДИНЕНИЕ (DIRECT) ---
+DOMAIN-SUFFIX,online.moysklad.ru,DIRECT
+DOMAIN-SUFFIX,mos.ru,DIRECT
+DOMAIN-KEYWORD,yandex,DIRECT
+DOMAIN-SUFFIX,yandex.net,DIRECT
+DOMAIN-SUFFIX,yandex.ru,DIRECT
+DOMAIN-SUFFIX,yastatic.net,DIRECT
+DOMAIN-SUFFIX,vk.com,DIRECT
+DOMAIN-SUFFIX,ok.ru,DIRECT
+USER-AGENT,Yandex*,DIRECT
+USER-AGENT,Kaspersky*,DIRECT
+
+# --- 2. КРИТИЧЕСКИЙ ПРОКСИ (ПРОПИСАНО ВРУЧНУЮ ДЛЯ НАДЕЖНОСТИ) ---
+
+# Gemini / Google AI
+DOMAIN,gemini.google.com,AUTO
+DOMAIN-SUFFIX,generativelanguage.googleapis.com,AUTO
+DOMAIN-KEYWORD,google,AUTO
+DOMAIN-SUFFIX,google.com,AUTO
+DOMAIN-SUFFIX,gstatic.com,AUTO
+
+# YouTube (Основные домены)
+DOMAIN-KEYWORD,youtube,AUTO
+DOMAIN-SUFFIX,youtube.com,AUTO
+DOMAIN-SUFFIX,googlevideo.com,AUTO
+DOMAIN-SUFFIX,ytimg.com,AUTO
+DOMAIN-SUFFIX,ggpht.com,AUTO
+
+# Telegram (Домены + IP)
+DOMAIN-KEYWORD,telegram,AUTO
+DOMAIN-SUFFIX,t.me,AUTO
+DOMAIN-SUFFIX,tdesktop.com,AUTO
+IP-CIDR,91.108.4.0/22,AUTO,no-resolve
+IP-CIDR,91.108.56.0/22,AUTO,no-resolve
+IP-CIDR,149.154.160.0/20,AUTO,no-resolve
+IP-CIDR,185.76.151.0/24,AUTO,no-resolve
+
+# Meta (Instagram, WhatsApp)
+DOMAIN-KEYWORD,instagram,AUTO
+DOMAIN-KEYWORD,facebook,AUTO
+DOMAIN-SUFFIX,cdninstagram.com,AUTO
+DOMAIN-SUFFIX,fbcdn.net,AUTO
+DOMAIN-SUFFIX,instagram.com,AUTO
+DOMAIN-SUFFIX,whatsapp.com,AUTO
+DOMAIN-SUFFIX,whatsapp.net,AUTO
+
+# Discord
+DOMAIN-KEYWORD,discord,AUTO
+DOMAIN-SUFFIX,discord.gg,AUTO
+DOMAIN-SUFFIX,discord.com,AUTO
+DOMAIN-SUFFIX,discordapp.net,AUTO
+
+# OpenAI (ChatGPT) на всякий случай
+DOMAIN-KEYWORD,openai,AUTO
+DOMAIN-SUFFIX,openai.com,AUTO
+DOMAIN-SUFFIX,chatgpt.com,AUTO
+
+# --- 3. АВТОМАТИЧЕСКИЕ СПИСКИ (ДЛЯ ПОДСТРАХОВКИ И РЕКЛАМЫ) ---
+RULE-SET,https://raw.githubusercontent.com/dlisin/shadowrocket-config/master/reject.list,REJECT
+RULE-SET,https://github.com/toneywhitez/zkeen_rules/releases/latest/download/youtube_ips.list,AUTO,no-resolve
+RULE-SET,https://raw.githubusercontent.com/misha-tgshv/shadowrocket-configuration-file/main/rules/voice_ports.list,AUTO
+
+# --- 4. ВСЁ ОСТАЛЬНОЕ НАПРЯМУЮ ---
+FINAL,DIRECT
+
+[Host]
+localhost = 127.0.0.1
