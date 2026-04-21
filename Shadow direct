@@ -122,6 +122,8 @@ DOMAIN-SUFFIX,fbcdn.net,AUTO
 DOMAIN-SUFFIX,instagram.com,AUTO
 DOMAIN-SUFFIX,whatsapp.com,AUTO
 DOMAIN-SUFFIX,whatsapp.net,AUTO
+RULE-SET,https://raw.githubusercontent.com/HybridNetworks/whatsapp-cidr/main/WhatsApp/whatsapp_cidr_ipv4.list,AUTO,no-resolve
+
 
 # Discord
 DOMAIN-KEYWORD,discord,AUTO
