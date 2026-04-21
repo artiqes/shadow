@@ -116,6 +116,7 @@ IP-ASN,62041,AUTO,no-resolve
 # Meta (Instagram, WhatsApp)
 DOMAIN-KEYWORD,instagram,AUTO
 DOMAIN-KEYWORD,facebook,AUTO
+DOMAIN-KEYWORD,whatsapp,AUTO
 DOMAIN-SUFFIX,cdninstagram.com,AUTO
 DOMAIN-SUFFIX,fbcdn.net,AUTO
 DOMAIN-SUFFIX,instagram.com,AUTO
