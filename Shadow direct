@@ -122,6 +122,10 @@ DOMAIN-SUFFIX,fbcdn.net,AUTO
 DOMAIN-SUFFIX,instagram.com,AUTO
 DOMAIN-SUFFIX,whatsapp.com,AUTO
 DOMAIN-SUFFIX,whatsapp.net,AUTO
+DOMAIN-SUFFIX,web.whatsapp.com,AUTO
+DOMAIN-SUFFIX,dyn.whatsapp.net,AUTO
+DOMAIN-SUFFIX,pps.whatsapp.net,AUTO
+DOMAIN-KEYWORD,whatsapp-plus,AUTO
 RULE-SET,https://raw.githubusercontent.com/HybridNetworks/whatsapp-cidr/main/WhatsApp/whatsapp_cidr_ipv4.list,AUTO,no-resolve
 
 
