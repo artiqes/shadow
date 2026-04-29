@@ -50,6 +50,9 @@ DOMAIN-SUFFIX,ok.ru,DIRECT
 USER-AGENT,Yandex*,DIRECT
 USER-AGENT,Kaspersky*,DIRECT
 
+# --- КИНОПАБ ---
+DOMAIN-SUFFIX,wxwd.twk.ovh,DIRECT
+
 # Gemini / Google AI
 DOMAIN,gemini.google.com,AUTO
 DOMAIN-SUFFIX,generativelanguage.googleapis.com,AUTO
