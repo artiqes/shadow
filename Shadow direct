@@ -50,107 +50,104 @@ DOMAIN-SUFFIX,ok.ru,DIRECT
 USER-AGENT,Yandex*,DIRECT
 USER-AGENT,Kaspersky*,DIRECT
 
-# --- КИНОПАБ ---
-DOMAIN-SUFFIX,wxwd.twk.ovh,DIRECT
-
-# Gemini / Google AI
-DOMAIN,gemini.google.com,AUTO
-DOMAIN-SUFFIX,generativelanguage.googleapis.com,AUTO
-DOMAIN-KEYWORD,google,AUTO
-DOMAIN-SUFFIX,google.com,AUTO
-DOMAIN-SUFFIX,gstatic.com,AUTO
+# Gemini / Google AI & Search
+DOMAIN,gemini.google.com,PROXY
+DOMAIN-SUFFIX,generativelanguage.googleapis.com,PROXY
+DOMAIN-SUFFIX,google.com,PROXY
+DOMAIN-SUFFIX,gstatic.com,PROXY
+DOMAIN-KEYWORD,google,PROXY
 
 # YouTube (Основные домены)
-DOMAIN-KEYWORD,youtube,AUTO
-DOMAIN-SUFFIX,youtube.com,AUTO
-DOMAIN-SUFFIX,googlevideo.com,AUTO
-DOMAIN-SUFFIX,ytimg.com,AUTO
-DOMAIN-SUFFIX,ggpht.com,AUTO
-IP-CIDR,64.233.160.0/19,AUTO,no-resolve
-IP-CIDR,74.125.0.0/16,AUTO,no-resolve
-IP-CIDR,108.177.0.0/17,AUTO,no-resolve
-IP-CIDR,142.250.0.0/15,AUTO,no-resolve
-IP-CIDR,172.217.0.0/16,AUTO,no-resolve
-IP-CIDR,173.194.0.0/16,AUTO,no-resolve
-IP-CIDR,209.85.128.0/17,AUTO,no-resolve
-IP-CIDR,216.58.192.0/19,AUTO,no-resolve
+DOMAIN-KEYWORD,youtube,PROXY
+DOMAIN-SUFFIX,youtube.com,PROXY
+DOMAIN-SUFFIX,googlevideo.com,PROXY
+DOMAIN-SUFFIX,ytimg.com,PROXY
+DOMAIN-SUFFIX,ggpht.com,PROXY
+DOMAIN-SUFFIX,youtu.be,PROXY
+IP-CIDR,64.233.160.0/19,PROXY,no-resolve
+IP-CIDR,74.125.0.0/16,PROXY,no-resolve
+IP-CIDR,108.177.0.0/17,PROXY,no-resolve
+IP-CIDR,142.250.0.0/15,PROXY,no-resolve
+IP-CIDR,172.217.0.0/16,PROXY,no-resolve
+IP-CIDR,173.194.0.0/16,PROXY,no-resolve
+IP-CIDR,209.85.128.0/17,PROXY,no-resolve
+IP-CIDR,216.58.192.0/19,PROXY,no-resolve
 
-# --- TELEGRAM & КЛИЕНТЫ ---
-DOMAIN,api.imem.app,AUTO
-DOMAIN,api.swiftgram.app,AUTO
-DOMAIN-KEYWORD,nicegram,AUTO
-DOMAIN-KEYWORD,telegram,AUTO
-DOMAIN-SUFFIX,t.me,AUTO
-DOMAIN-SUFFIX,tdesktop.com,AUTO
-DOMAIN-SUFFIX,telegra.ph,AUTO
-DOMAIN-SUFFIX,telegram.org,AUTO
-DOMAIN-SUFFIX,telegram.dog,AUTO
-DOMAIN-SUFFIX,telegram.me,AUTO
-DOMAIN-SUFFIX,telegram.space,AUTO
-DOMAIN-SUFFIX,telegram-cdn.org,AUTO
-DOMAIN-SUFFIX,telegramdownload.com,AUTO
-DOMAIN-SUFFIX,cdn-telegram.org,AUTO
-DOMAIN-SUFFIX,comments.app,AUTO
-DOMAIN-SUFFIX,contest.com,AUTO
-DOMAIN-SUFFIX,graph.org,AUTO
-DOMAIN-SUFFIX,legra.ph,AUTO
-DOMAIN-SUFFIX,mbrx.app,AUTO
-DOMAIN-SUFFIX,quiz.directory,AUTO
-DOMAIN-SUFFIX,stel.com,AUTO
-DOMAIN-SUFFIX,telega.one,AUTO
-DOMAIN-SUFFIX,telesco.pe,AUTO
-DOMAIN-SUFFIX,tg.dev,AUTO
-DOMAIN-SUFFIX,tx.me,AUTO
-DOMAIN-SUFFIX,usercontent.dev,AUTO
+# --- TELEGRAM & КЛИЕНТЫ (СТРОГО В ПРОКСИ) ---
+DOMAIN,api.imem.app,PROXY
+DOMAIN,api.swiftgram.app,PROXY
+DOMAIN-KEYWORD,nicegram,PROXY
+DOMAIN-KEYWORD,telegram,PROXY
+DOMAIN-SUFFIX,t.me,PROXY
+DOMAIN-SUFFIX,tdesktop.com,PROXY
+DOMAIN-SUFFIX,telegra.ph,PROXY
+DOMAIN-SUFFIX,telegram.org,PROXY
+DOMAIN-SUFFIX,telegram.dog,PROXY
+DOMAIN-SUFFIX,telegram.me,PROXY
+DOMAIN-SUFFIX,telegram.space,PROXY
+DOMAIN-SUFFIX,telegram-cdn.org,PROXY
+DOMAIN-SUFFIX,telegramdownload.com,PROXY
+DOMAIN-SUFFIX,cdn-telegram.org,PROXY
+DOMAIN-SUFFIX,comments.app,PROXY
+DOMAIN-SUFFIX,contest.com,PROXY
+DOMAIN-SUFFIX,graph.org,PROXY
+DOMAIN-SUFFIX,legra.ph,PROXY
+DOMAIN-SUFFIX,mbrx.app,PROXY
+DOMAIN-SUFFIX,quiz.directory,PROXY
+DOMAIN-SUFFIX,stel.com,PROXY
+DOMAIN-SUFFIX,telega.one,PROXY
+DOMAIN-SUFFIX,telesco.pe,PROXY
+DOMAIN-SUFFIX,tg.dev,PROXY
+DOMAIN-SUFFIX,tx.me,PROXY
+DOMAIN-SUFFIX,usercontent.dev,PROXY
 
 # Telegram IP Ranges & ASN
-IP-CIDR,91.108.0.0/16,AUTO,no-resolve
-IP-CIDR,149.154.160.0/20,AUTO,no-resolve
-IP-CIDR,109.239.140.0/24,AUTO,no-resolve
-IP-CIDR,5.28.192.0/18,AUTO,no-resolve
-IP-CIDR,139.59.210.98/32,AUTO,no-resolve
-IP-CIDR,196.55.216.167/32,AUTO,no-resolve
-IP-ASN,211157,AUTO,no-resolve
-IP-ASN,44907,AUTO,no-resolve
-IP-ASN,59930,AUTO,no-resolve
-IP-ASN,62014,AUTO,no-resolve
-IP-ASN,62041,AUTO,no-resolve
+IP-CIDR,91.108.0.0/16,PROXY,no-resolve
+IP-CIDR,149.154.160.0/20,PROXY,no-resolve
+IP-CIDR,109.239.140.0/24,PROXY,no-resolve
+IP-CIDR,5.28.192.0/18,PROXY,no-resolve
+IP-CIDR,139.59.210.98/32,PROXY,no-resolve
+IP-CIDR,196.55.216.167/32,PROXY,no-resolve
+IP-ASN,211157,PROXY,no-resolve
+IP-ASN,44907,PROXY,no-resolve
+IP-ASN,59930,PROXY,no-resolve
+IP-ASN,62014,PROXY,no-resolve
+IP-ASN,62041,PROXY,no-resolve
 
 # Meta (Instagram, WhatsApp)
-DOMAIN-KEYWORD,instagram,AUTO
-DOMAIN-KEYWORD,facebook,AUTO
-DOMAIN-KEYWORD,whatsapp,AUTO
-DOMAIN-SUFFIX,cdninstagram.com,AUTO
-DOMAIN-SUFFIX,fbcdn.net,AUTO
-DOMAIN-SUFFIX,instagram.com,AUTO
-DOMAIN-SUFFIX,whatsapp.com,AUTO
-DOMAIN-SUFFIX,whatsapp.net,AUTO
-DOMAIN-SUFFIX,web.whatsapp.com,AUTO
-DOMAIN-SUFFIX,dyn.whatsapp.net,AUTO
-DOMAIN-SUFFIX,pps.whatsapp.net,AUTO
-DOMAIN-KEYWORD,whatsapp-plus,AUTO
-RULE-SET,https://raw.githubusercontent.com/HybridNetworks/whatsapp-cidr/main/WhatsApp/whatsapp_cidr_ipv4.list,AUTO,no-resolve
-
+DOMAIN-KEYWORD,instagram,PROXY
+DOMAIN-KEYWORD,facebook,PROXY
+DOMAIN-KEYWORD,whatsapp,PROXY
+DOMAIN-SUFFIX,cdninstagram.com,PROXY
+DOMAIN-SUFFIX,fbcdn.net,PROXY
+DOMAIN-SUFFIX,instagram.com,PROXY
+DOMAIN-SUFFIX,whatsapp.com,PROXY
+DOMAIN-SUFFIX,whatsapp.net,PROXY
+DOMAIN-SUFFIX,web.whatsapp.com,PROXY
+DOMAIN-SUFFIX,dyn.whatsapp.net,PROXY
+DOMAIN-SUFFIX,pps.whatsapp.net,PROXY
+DOMAIN-KEYWORD,whatsapp-plus,PROXY
+RULE-SET,https://raw.githubusercontent.com/HybridNetworks/whatsapp-cidr/main/WhatsApp/whatsapp_cidr_ipv4.list,PROXY,no-resolve
 
 # Discord
-DOMAIN-KEYWORD,discord,AUTO
-DOMAIN-SUFFIX,discord.gg,AUTO
-DOMAIN-SUFFIX,discord.com,AUTO
-DOMAIN-SUFFIX,discordapp.net,AUTO
+DOMAIN-KEYWORD,discord,PROXY
+DOMAIN-SUFFIX,discord.gg,PROXY
+DOMAIN-SUFFIX,discord.com,PROXY
+DOMAIN-SUFFIX,discordapp.net,PROXY
 
-# OpenAI (ChatGPT) на всякий случай
-DOMAIN-KEYWORD,openai,AUTO
-DOMAIN-SUFFIX,openai.com,AUTO
-DOMAIN-SUFFIX,chatgpt.com,AUTO
+# OpenAI (ChatGPT)
+DOMAIN-KEYWORD,openai,PROXY
+DOMAIN-SUFFIX,openai.com,PROXY
+DOMAIN-SUFFIX,chatgpt.com,PROXY
+DOMAIN-SUFFIX,oaistatic.com,PROXY
+DOMAIN-SUFFIX,oaiusercontent.com,PROXY
 
-DOMAIN-KEYWORD,nnmclub,AUTO
-DOMAIN-KEYWORD,rutracker,AUTO
+# Блокируемые трекеры и сайты
+DOMAIN-KEYWORD,nnmclub,PROXY
+DOMAIN-KEYWORD,rutracker,PROXY
+DOMAIN-SUFFIX,rutracker.org,PROXY
 
-# --- 3. АВТОМАТИЧЕСКИЕ СПИСКИ ---
-
-#RULE-SET,https://raw.githubusercontent.com/misha-tgshv/shadowrocket-configuration-file/main/rules/voice_ports.list,AUTO
-
-# --- 4. ВСЁ ОСТАЛЬНОЕ НАПРЯМУЮ ---
+# --- ФИНАЛЬНОЕ ПРАВИЛО: ВСЁ ОСТАЛЬНОЕ НАПРЯМУЮ ---
 FINAL,DIRECT
 
 [Host]
