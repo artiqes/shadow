@@ -1,4 +1,4 @@
-# Shadowrocket: 2026-09-29 23:40:19
+# Shadowrocket: 2026-09-30 17:57:44
 [General]
 
 # Быстрая настройка Shadowrocket:
@@ -130,6 +130,7 @@ update-url = https://raw.githubusercontent.com/artiqes/shadow/6be3f8bb9fde6c8a12
 
 [Rule]
 # Почта
+DOMAIN-SUFFIX,imap.gmail.com,DIRECT
 DOMAIN-SUFFIX,smtp.gmail.com,DIRECT
 DOMAIN-SUFFIX,sr-client-cfg.amplitude.com,DIRECT
 
